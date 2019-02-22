@@ -58,5 +58,7 @@ View(wnominatehouse)
 
 help(subset)
 
-HouseParty <- subset(wnominatehouse, party == 100 & congress == 88, select = c(party, congress))
+HouseParty <- wnominatehouse[wnominatehouse$party==100 & wnominatehouse$congress==88,]
+
+HouseParty <- subset(wnominatehouse, party == 100 & congress == 88, select = colnames(wnominatehouse))
 View(HouseParty)
