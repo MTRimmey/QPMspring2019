@@ -15,7 +15,8 @@
 ##
 help(t.test)
 
-
+getwd()
+setwd("~/Documents/GitHub/QPMspring2019/labs")
 social <- read.csv("social.csv")
 colnames(social)
 
@@ -91,11 +92,6 @@ chisq.test(fake.tab)
 
 
 
-
-
-
-
-
 #### Group Work ####
 
 
@@ -117,8 +113,16 @@ chisq.test(fake.tab)
 negative <- read.csv("negative_ads.csv")
 colnames(negative)
 
+
+t.test(primary2004 ~ treatment, data=social,
+       alternative="two.sided", var.equal=FALSE) # default options
+
+
 # Do negative messages make a difference for voter turnout? Conduct an
 # appropriate test and interpret the result.
+
+t.test(voted02p ~ treatment, data=negative, alterntive="two-sided", var.equals=F)
+
 
 # treatment: 1 = negative frame (control), 2 = positive frame (treatment)
 # voted02p: 0 = did not vote, 1 = voted
@@ -136,11 +140,35 @@ library(titanic)
 my.titanic <- titanic_train
 View(my.titanic)
 
+
+matrix(data=my.titanic)
+table()
+
 #    (1) Make a contingency table of the observed frequencies for the survival 
 #    of passengers with respect to their class.
 #    Hint: use table().
 #    (2) Conduct a necessary hypothesis test with the null that survival and 
 #    passanger class are independent. Interpret the result.
+
+
+
+myTable <- table(my.titanic$Survived, my.titanic$Pclass)
+
+
+TitTable = table(my.titanic$Survived, my.titanic$Pclass)
+dimnames(fake.tab) <- list(Survived=c("Dead", "Alive"),
+                           Class=c("Rich", "Middle", "Poor"))
+
+
+TitTable
+chisq.test(myTable)
+
+
+TitRowNames = c("First", "Second", "Third")
+TitColNames = c("Dead", "Survived")
+
+chisq.test(TitTable)
+
 
 
 
@@ -154,3 +182,7 @@ View(my.titanic)
 
 
 
+
+LadiesNight <- my.titanic[my.titanic$Sex=="female",]
+myNewTable <- table(LadiesNight$Survived, LadiesNight$Pclass)
+chisq.test(myNewTable)
