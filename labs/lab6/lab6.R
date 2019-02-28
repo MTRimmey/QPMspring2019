@@ -121,7 +121,7 @@ t.test(primary2004 ~ treatment, data=social,
 # Do negative messages make a difference for voter turnout? Conduct an
 # appropriate test and interpret the result.
 
-t.test(voted02p ~ treatment, data=negative, alterntive="two-sided", var.equals=F)
+t.test(voted02p ~ treatment, data=negative, alternative="two-sided", var.equals=F)
 
 
 # treatment: 1 = negative frame (control), 2 = positive frame (treatment)
