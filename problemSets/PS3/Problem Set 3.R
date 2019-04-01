@@ -1,4 +1,4 @@
-# Question 1
+## Question 1
 
 install.packages("faraway")
 library("faraway")
