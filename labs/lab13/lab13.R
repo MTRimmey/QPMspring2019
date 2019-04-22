@@ -3,7 +3,7 @@
 ## Multiple Regression in R                        ##
 #####################################################
 
-
+setwd("~/Documents/QPMspring2019/lab13")
 
 
 ## Goals:
@@ -21,13 +21,14 @@
 library(faraway)
 data(sat)
 ?sat
-
+load(sat)
 
 # We found that expend has a positive effect on takers with
 # 95% level of significance.
 sat1 <- lm(takers ~ expend, data=sat)
 summary(sat1)
-
+sat2 <- lm(expend ~ takers, data=sat)
+summary(sat2)
 
 # What if we control for other factors?
 sat2 <- lm(takers ~ expend + ratio + salary, data=sat)
@@ -39,7 +40,7 @@ summary(sat2)
 # What if we include all the variables in the data?
 sat3 <- lm(takers ~ ., data=sat)
 summary(sat3)
-# total is NA because it is verbal + math
+# total is NA because it is verbal + math (Saturated Model)
 
 
 
@@ -49,7 +50,8 @@ summary(sat3)
 ##
 
 # Load a fake dataset
-load("fake.RData")
+setwd("GitHub/QPMspring2019")
+load("labs/lab13/Fake.RData")
 
 table(fake.dat$partyID, fake.dat$treatment)
 
@@ -105,7 +107,8 @@ interaction.plot(fake.dat$treatment,
 no.int <- lm(y ~ treatment, data=fake.dat)
 summary(no.int)
 # Treatment is not statistically different from 0
-
+no.int <- lm(y ~ treatment + partyID, data=fake.dat)
+summary(no.int)
 
 # Let's try interaction
 int1 <- lm(y ~ treatment + partyID + treatment:partyID, data=fake.dat)

@@ -3,7 +3,7 @@
 ## Regression Diagnostics in R                     ##
 #####################################################
 
-
+getwd()
 
 
 ## Goals:
@@ -119,8 +119,8 @@ abline(h=0)
 plot(model3)
 
 
-
-
+par(c(2,2))
+plot(model13)
 
 
 

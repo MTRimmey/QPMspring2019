@@ -16,7 +16,7 @@ Obama mean: 374.1993
 
 x <- seq(-4, 4, length=1000)
 y <- dnorm(x, mean=0, sd=1)
-plot(x, y, type="l", lwd=1)
+plot(x,y, type="l", lwd=1)
 
 DF1 <- dt(x, 20)
 lines(x, DF1, type="l", lwd=1, col="Red")
@@ -42,11 +42,12 @@ data("voteincome")
 
 table(voteincome$year)
 table(voteincome$income)
-table(voteincome$age)/1500
+table(voteincome$age)/1283
 
 sd(voteincome$age)
 mean(voteincome$age)
 (voteincome$age)
+sum(voteincome$vote)
 
 s = 17.47113
 m = 49.26133
@@ -94,8 +95,8 @@ mean(sample_means)
 
 # Question 5
 
-No R
-  
+Population <- (698)
+mean(Population)
   
   
   

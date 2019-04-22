@@ -14,7 +14,9 @@
 ## Paper: G. King, O. Rosen, M. Tanner, A.F. Wagner (2008)
 ## “Ordinary economic voting behavior in the extraordinary
 ## election of Adolf Hitler.” 
-load("nazis.Rdata")
+getwd()
+setwd("GitHub/QPMspring2019")
+load("labs/lab12/nazis.Rdata")
 
 
 ## Variables
@@ -124,7 +126,7 @@ data(sat)
 ## % of eligible students taking the SAT as our outcome.  Do these data
 ## look like good candidates for OLS?
 
-
+plot(sat$expend, sat$total, data=sat)
 
 
 
@@ -132,15 +134,15 @@ data(sat)
 ## expenditures are associated with more students taking the SAT
 
 
-
+satModel <- lm(total ~ expend, data=sat)
 
 
 
 ## (2) What are the null and alternative hypotheses?
 
+summary(satModel)
 
-
-
+NULL SHOULD BE ZERO
 
 ## (3) Interpret the effect of the coefficient on "expend".
 
@@ -153,7 +155,8 @@ data(sat)
 ## the line fits the data well?
 
 
-
+plot(sat$expend, sat$total)
+abline(satModel, col="Blue")
 
 
 ## (5) Visually examine the residuals.  Does your evaluation of the use
@@ -161,7 +164,7 @@ data(sat)
 ## wrong with your residual plot?
 
 
-
-
-
+hist(satModel$residuals)
+abline(v=0, col="Blue")
+abline(v=mean(satModel$residuals), col="Red")
 
