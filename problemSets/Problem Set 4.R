@@ -103,6 +103,8 @@ plot(residuals(ModelOne) ~ fitted(ModelOne), data=Incumbents)
 abline(h=0)
 summary(ResidualOne)
 
+# Prediction Equation: ybar = 0.579031 + 0.041666 X-difflog
+
 coef(ModelOne)
 abline(a=coef(ModelOne)[1], b=coef(ModelOne)[2], 
        lwd=2, col="Blue")
@@ -120,6 +122,8 @@ ResidualTwo = (residuals(ModelTwo))
 residuals <- plot(residuals(ModelTwo) ~ fitted(ModelTwo), data=Incumbents)
 abline(h=0)
 summary(ResidualTwo)
+
+# ybar = 0.507583 + 0.023837 X-difflog
 
 coef(ModelTwo)
 abline(a=coef(ModelTwo)[1], b=coef(ModelTwo)[2], 
@@ -139,6 +143,8 @@ residuals <- plot(residuals(ModelThree) ~ fitted(ModelThree), data=Incumbents)
 abline(h=0)
 summary(ResidualThree)
 
+# ybar = 0.20363 + 0.53042 X-voteshare
+
 coef(ModelThree)
 abline(a=coef(ModelThree)[1], b=coef(ModelThree)[2], 
        lwd=2, col="Blue")
@@ -148,18 +154,22 @@ abline(a=coef(ModelThree)[1], b=coef(ModelThree)[2],
 scatterplot(ResidualOne ~ ResidualTwo,
             main="Residual Comparison", xlab="Residual Two", ylab="Residual One")
 ResidualComparison <- (lm(ResidualOne ~ ResidualTwo, data=Incumbents))
-abline(ModelThree, col="Red", lwd=2)
-summary(ModelThree)
+abline(ResidualComparison, col="Red", lwd=2)
+summary(ResidualComparison)
+
+# ybar = 4.860e18 + 2.569e-01 X-Residual Two
 
 #6 E
 
 Incumbents$difflogpresvote = Incumbents$difflog + Incumbents$presvote
 
 scatterplot(Incumbents$voteshare ~ Incumbents$difflogpresvote,
-            main="Model Five", xlab="", ylab="Vote Share")
-ModelFive <- (lm(presvote ~ voteshare, data=Incumbents))
+            main="Model Five", xlab="Diff Log and Presidential Vote", ylab="Vote Share")
+ModelFive <- (lm(voteshare ~difflogpresvote, data=Incumbents))
 abline(ModelFive, col="Red", lwd=2)
 summary(ModelFive)
+
+# ybar = 0.5554993 + 0.0419046 X-difflogpresvote
 
 
 
