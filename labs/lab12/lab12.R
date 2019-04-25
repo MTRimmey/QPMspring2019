@@ -12,12 +12,13 @@
 
 ## Data on 1932 German Election (at precinct level)
 ## Paper: G. King, O. Rosen, M. Tanner, A.F. Wagner (2008)
-## “Ordinary economic voting behavior in the extraordinary
-## election of Adolf Hitler.” 
+## ordinary economic voting behavior in the extraordinary
+## election of Adolf Hitler. 
 getwd()
 setwd("GitHub/QPMspring2019")
 load("labs/lab12/nazis.Rdata")
-
+setwd("~/Documents/GitHub/QPMspring2019/lab12")
+load("nazis.Rdata")
 
 ## Variables
 ## nvoter: number of eligible voters
@@ -142,7 +143,7 @@ satModel <- lm(total ~ expend, data=sat)
 
 summary(satModel)
 
-NULL SHOULD BE ZERO
+# NULL SHOULD BE ZERO
 
 ## (3) Interpret the effect of the coefficient on "expend".
 
